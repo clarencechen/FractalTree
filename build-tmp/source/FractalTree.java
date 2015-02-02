@@ -1,5 +1,21 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class FractalTree extends PApplet {
+
 public double branchAngle = PI/6;
-private double fractionLength = .75;
+private double fractionLength = .75f;
 private int smallestBranch = 54; 
 public void setup() 
 {   
@@ -12,7 +28,7 @@ public void draw()
 	background(0);
 	stroke(0,255,0);   
 	line(0, 394, 0, 256, 394, 0);   
-	drawBranches(256.0, 394.0, 0.0, 128.0, 0.0, PI/2, PI/2);  //will add later 
+	drawBranches(256.0f, 394.0f, 0.0f, 128.0f, 0.0f, PI/2, PI/2);  //will add later 
 } 
 public void drawBranches(double x,double y, double z, double branchLength, double xAngle, double yAngle, double zAngle)
 {
@@ -39,9 +55,9 @@ public void drawBranches(double x,double y, double z, double branchLength, doubl
 		rotateX(PI/2 -(float)xAngle);
 		rotateY(PI/2 -(float)yAngle);
 		rotateZ(PI/2 -(float)zAngle);
-		line(0., 0., 0., (float)(ax), (float)(ay), (float)(az));
-		line(0., 0., 0., (float)(bx), (float)(by), (float)(bz));
-		line(0., 0., 0., (float)(cx), (float)(cy), (float)(cz));
+		line(0.f, 0.f, 0.f, (float)(ax), (float)(ay), (float)(az));
+		line(0.f, 0.f, 0.f, (float)(bx), (float)(by), (float)(bz));
+		line(0.f, 0.f, 0.f, (float)(cx), (float)(cy), (float)(cz));
 		popMatrix();
 	}
 	else
@@ -51,9 +67,9 @@ public void drawBranches(double x,double y, double z, double branchLength, doubl
 		rotateX(PI/2 -(float)xAngle);
 		rotateY(PI/2 -(float)yAngle);
 		rotateZ(PI/2 -(float)zAngle);
-		line(0., 0., 0., (float)(ax), (float)(ay), (float)(az));
-		line(0., 0., 0., (float)(bx), (float)(by), (float)(bz));
-		line(0., 0., 0., (float)(cx), (float)(cy), (float)(cz));
+		line(0.f, 0.f, 0.f, (float)(ax), (float)(ay), (float)(az));
+		line(0.f, 0.f, 0.f, (float)(bx), (float)(by), (float)(bz));
+		line(0.f, 0.f, 0.f, (float)(cx), (float)(cy), (float)(cz));
 		drawBranches(ax, ay, az, branchLength*fractionLength, Math.acos(ai), Math.acos(aj), Math.acos(ak));
 		drawBranches(bx, by, bz, branchLength*fractionLength, Math.acos(bi), Math.acos(bj), Math.acos(bk));
 		drawBranches(cx, cy, cz, branchLength*fractionLength, Math.acos(ci), Math.acos(cj), Math.acos(ck));
@@ -87,15 +103,24 @@ public void keyPressed()
 		}
 		case LEFT:
 		{
-			smallestBranch /= .75;
+			smallestBranch /= .75f;
 			break;
 		}
 		case RIGHT:
 		{
-			smallestBranch *= .75;
+			smallestBranch *= .75f;
 			break;
 		}
 		default:
 			break;	
 	}
+}
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "FractalTree" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
 }
