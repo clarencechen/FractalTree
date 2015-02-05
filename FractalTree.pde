@@ -1,5 +1,5 @@
-public double branchAngle = PI/6;
-private double fractionLength = .75;
+public float branchAngle = PI/6;
+private float fractionLength = .75;
 private int smallestBranch = 54; 
 public void setup() 
 {   
@@ -15,56 +15,56 @@ public void draw()
 	line(0, 394, 0, 256, 394, 0);   
 	drawBranches(256.0, 394.0, 0.0, 128.0, 0.0, 0.0, 0.0);  //will add later 
 } 
-public void drawBranches(double x,double y, double z, double branchLength, double xAngle, double yAngle, double zAngle)
+public void drawBranches(float x,float y, float z, float branchLength, float xAngle, float yAngle, float zAngle)
 {
-	double ax = branchLength*Math.cos(branchAngle);
-	double ay = branchLength*Math.sin(PI/6)*Math.sin(branchAngle);
-	double az = branchLength*Math.cos(PI/6)*Math.sin(branchAngle);
-	double bx = branchLength*Math.cos(branchAngle);
-	double by = branchLength*Math.sin(5*PI/6)*Math.sin(branchAngle);
-	double bz = branchLength*Math.cos(5*PI/6)*Math.sin(branchAngle);
-	double cx = branchLength*Math.cos(branchAngle);
-	double cy = branchLength*Math.sin(-3*PI/6)*Math.sin(branchAngle);
-	double cz = branchLength*Math.cos(-3*PI/6)*Math.sin(branchAngle);
-	double ar = Math.sqrt((ax)*(ax) +(ay)*(ay) +(az)*(az));
-	double br = Math.sqrt((bx)*(bx) +(by)*(by) +(bz)*(bz));
-	double cr = Math.sqrt((cx)*(cx) +(cy)*(cy) +(cz)*(cz));
-	double ai = (ax)/ar;	double bi = (bx)/br;	double ci = (cx)/cr;
-	double aj = (ay)/ar;	double bj = (by)/br;	double cj = (cy)/cr;
-	double ak = (az)/ar;	double bk = (bz)/br;	double ck = (cz)/cr;
+	float ax = branchLength*cos(branchAngle);
+	float ay = branchLength*sin(PI/6)*sin(branchAngle);
+	float az = branchLength*cos(PI/6)*sin(branchAngle);
+	float bx = branchLength*cos(branchAngle);
+	float by = branchLength*sin(5*PI/6)*sin(branchAngle);
+	float bz = branchLength*cos(5*PI/6)*sin(branchAngle);
+	float cx = branchLength*cos(branchAngle);
+	float cy = branchLength*sin(-3*PI/6)*sin(branchAngle);
+	float cz = branchLength*cos(-3*PI/6)*sin(branchAngle);
+	float ar = sqrt((ax)*(ax) +(ay)*(ay) +(az)*(az));
+	float br = sqrt((bx)*(bx) +(by)*(by) +(bz)*(bz));
+	float cr = sqrt((cx)*(cx) +(cy)*(cy) +(cz)*(cz));
+	float ai = (ax)/ar;	float bi = (bx)/br;	float ci = (cx)/cr;
+	float aj = (ay)/ar;	float bj = (by)/br;	float cj = (cy)/cr;
+	float ak = (az)/ar;	float bk = (bz)/br;	float ck = (cz)/cr;
 
 	if(branchLength <= smallestBranch)
 	{
 		pushMatrix();
-		translate((float)x, (float)y, (float)z);
-		rotateX(-(float)xAngle);
-		rotateY(-(float)yAngle);
-		rotateZ(-(float)zAngle);
+		translate(x, y, z);
+		rotateX(-xAngle);
+		rotateY(-yAngle);
+		rotateZ(-zAngle);
 		stroke(255,0,0);
-		line(0., 0., 0., (float)(ax), (float)(ay), (float)(az));
+		line(0., 0., 0., (ax), (ay), (az));
 		stroke(0,255,0);
-		line(0., 0., 0., (float)(bx), (float)(by), (float)(bz));
+		line(0., 0., 0., (bx), (by), (bz));
 		stroke(0,0,255);
-		line(0., 0., 0., (float)(cx), (float)(cy), (float)(cz));
+		line(0., 0., 0., (cx), (cy), (cz));
 		popMatrix();
 	}
 	else
 	{
 		pushMatrix();
-		translate((float)x, (float)y, (float)z);
-		rotateX(-(float)xAngle);
-		rotateY(-(float)yAngle);
-		rotateZ(-(float)zAngle);
+		translate(x, y, z);
+		rotateX(-xAngle);
+		rotateY(-yAngle);
+		rotateZ(-zAngle);
 		System.out.println(xAngle/PI + " " + yAngle/PI + " " +zAngle/PI);
 		stroke(255,0,0);
-		line(0., 0., 0., (float)(ax), (float)(ay), (float)(az));
+		line(0., 0., 0., (ax), (ay), (az));
 		stroke(0,255,0);
-		line(0., 0., 0., (float)(bx), (float)(by), (float)(bz));
+		line(0., 0., 0., (bx), (by), (bz));
 		stroke(0,0,255);
-		line(0., 0., 0., (float)(cx), (float)(cy), (float)(cz));
-		drawBranches(ax, ay, az, branchLength*fractionLength, Math.asin(ai) +xAngle, Math.asin(aj) +yAngle, Math.asin(ak) +zAngle);
-		drawBranches(bx, by, bz, branchLength*fractionLength, Math.asin(bi) +xAngle, Math.asin(bj) +yAngle, Math.asin(bk) +zAngle);
-		drawBranches(cx, cy, cz, branchLength*fractionLength, Math.asin(ci) +xAngle, Math.asin(cj) +yAngle, Math.asin(ck) +zAngle);
+		line(0., 0., 0., (cx), (cy), (cz));
+		drawBranches(ax, ay, az, branchLength*fractionLength, asin(ai) +xAngle, asin(aj) +yAngle, asin(ak) +zAngle);
+		drawBranches(bx, by, bz, branchLength*fractionLength, asin(bi) +xAngle, asin(bj) +yAngle, asin(bk) +zAngle);
+		drawBranches(cx, cy, cz, branchLength*fractionLength, asin(ci) +xAngle, asin(cj) +yAngle, asin(ck) +zAngle);
 		popMatrix();
 	}
 } 
