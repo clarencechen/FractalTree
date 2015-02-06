@@ -19,9 +19,8 @@ private float fractionLength = .75f;
 private int smallestBranch = 54; 
 public void setup() 
 {   
-	
-	background(0);
 	size(1024, 768, P3D);
+	background(0);
 	noLoop();
 } 
 public void draw() 
@@ -71,7 +70,6 @@ public void drawBranches(float x,float y, float z, float branchLength, float xAn
 		rotateX(-xAngle);
 		rotateY(-yAngle);
 		rotateZ(-zAngle);
-		System.out.println(xAngle/PI + " " + yAngle/PI + " " +zAngle/PI);
 		stroke(255,0,0);
 		line(0.f, 0.f, 0.f, (ax), (ay), (az));
 		stroke(0,255,0);
