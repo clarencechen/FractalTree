@@ -3,9 +3,8 @@ private float fractionLength = .75;
 private int smallestBranch = 54; 
 public void setup() 
 {   
-	
-	background(0);
 	size(1024, 768, P3D);
+	background(0);
 	noLoop();
 } 
 public void draw() 
