@@ -55,7 +55,6 @@ public void drawBranches(float x,float y, float z, float branchLength, float xAn
 		rotateX(-xAngle);
 		rotateY(-yAngle);
 		rotateZ(-zAngle);
-		System.out.println(xAngle/PI + " " + yAngle/PI + " " +zAngle/PI);
 		stroke(255,0,0);
 		line(0., 0., 0., (ax), (ay), (az));
 		stroke(0,255,0);
